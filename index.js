@@ -7,13 +7,13 @@ require('dotenv').config();
 const app=express();
 const PORT=process.env.PORT;
 const server=http.createServer(app);
-const io=new Server(server);//this gives a script which we load in frontend
+const io=new Server(server);//this gives a script which we load in frontend and updates the server
 
 io.on('connection',(client)=>{//when ever a connection is there from fe
         console.log("A new user has connected "+client.id);
-        client.on("user-message",(msg,username)=>{
+        client.on("user-message",(msg,username,secretkey)=>{
             console.log(`A new user message ${msg} from ${username}`)
-            io.emit('message',msg,username);//io means jitne bhi hhumare connection hai
+            io.emit('message',msg,username,secretkey);//io means jitne bhi hhumare connection hai
         })
 })
 
