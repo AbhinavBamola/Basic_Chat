@@ -1,0 +1,12 @@
+In the servers we have made so far it is only a one way connection where the server responds to the users request and can't
+send anything to the user otherwise
+
+Now let us take the example of chat application->
+1.>Using polling (each users req the server if it has any msgs for it and if any sen it because the server can't initiate comm to deliver the msg)
+        But Polling is overkill and increase the load on the server tremmendously.
+        Now to solve this problem we have WEB SOCKETS
+2.>It is bidirectional connection and maintains thet comms route b/w the server and the client so that both can communicate
+        It is a bidirectional communication protocol
+        we sent a http req and in its header upgrade it to web socket connection
+
+**We make use of http module with express cuz we have to attach socket.io with the server and we can't directly listen
