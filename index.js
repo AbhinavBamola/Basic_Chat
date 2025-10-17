@@ -11,9 +11,9 @@ const io=new Server(server);//this gives a script which we load in frontend and 
 
 io.on('connection',(client)=>{//when ever a connection is there from fe
         console.log("A new user has connected "+client.id);
-        client.on("user-message",(msg,username,secretkey)=>{
-            console.log(`A new user message ${msg} from ${username}`)
-            io.emit('message',msg,username,secretkey);//io means jitne bhi hhumare connection hai
+        client.on("user-message",(msg,secretkey)=>{
+            console.log(`A new user message ${msg}`)
+            io.emit('message',msg,secretkey);//io means jitne bhi hhumare connection hai
         })
 })
 
