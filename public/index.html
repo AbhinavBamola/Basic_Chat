@@ -21,14 +21,13 @@
         const sendbtn = document.getElementById("submitbutton");
         
 
-        socket.on('message', (messsage,username,secretkey) => {
+        socket.on('message', (messsage,secretkey) => {
             const sk=document.getElementById("secretkey").value;
             if(sk==secretkey){       const div=document.createElement('div');
-            const h3=document.createElement('h3');
-            h3.innerText=username;
+
             const l=document.createElement('p');
             l.innerText=messsage;
-            div.appendChild(h3);
+        
             div.appendChild(l);
             document.getElementById('allmsgs').appendChild(div);
             console.log(messsage);
@@ -37,10 +36,9 @@
 
         sendbtn.addEventListener('click', (event) => {
             const msg=input.value;
-            const username=document.getElementById("username").value;
             const secretkey=document.getElementById("secretkey").value;
             console.log(msg);
-            socket.emit('user-message', msg,username,secretkey)
+            socket.emit('user-message', msg,secretkey)
         })
     </script>
 </body>
